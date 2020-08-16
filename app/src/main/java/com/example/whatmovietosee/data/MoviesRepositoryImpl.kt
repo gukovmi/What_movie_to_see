@@ -10,11 +10,8 @@ class MoviesRepositoryImpl(
     private val networkMoviesDataSource: NetworkMoviesDataSource
 ): MoviesRepository {
 
-    override fun getTopRatedMovies(
-        apiCallback: ApiCallback<TopRatedResponse>,
-        page: Int
-    ) {
-        networkMoviesDataSource.getTopRatedMovies(apiCallback, page)
+    override fun getTopRatedMovies(page: Int) {
+        networkMoviesDataSource.getTopRatedMovies(page)
     }
 
 

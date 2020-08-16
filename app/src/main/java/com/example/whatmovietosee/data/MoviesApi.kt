@@ -4,6 +4,7 @@ import ImagesResponse
 import MovieDetails
 import VideosResponse
 import com.example.whatmovietosee.domain.entity.TopRated.TopRatedResponse
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -15,7 +16,7 @@ interface MoviesApi {
         @Query("api_key") apiKey:String,
         @Query("language") language:String,
         @Query("page") page:Int
-    ): Call<TopRatedResponse>
+    ): Single<TopRatedResponse>
 
     @GET("movie/{movie_id}")
     fun getMovieById(

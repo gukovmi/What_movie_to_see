@@ -1,14 +1,14 @@
 package com.example.whatmovietosee.top_rated_movies.presentation
 
 import android.util.Log
-import com.example.whatmovietosee.R
-import com.example.whatmovietosee.data.ApiCallback
 import com.example.whatmovietosee.domain.entity.TopRated.Movie
 import com.example.whatmovietosee.domain.entity.TopRated.TopRatedResponse
 import com.example.whatmovietosee.top_rated_movies.di.TopRatedMoviesModelFactory
 import com.example.whatmovietosee.top_rated_movies.domain.TopRatedMoviesModel
-import com.example.whatmovietosee.top_rated_movies.domain.TopRatedMoviesModelImpl
-import okhttp3.internal.wait
+import io.reactivex.android.schedulers.AndroidSchedulers
+
+import io.reactivex.schedulers.Schedulers
+
 
 class TopRatedMoviesPresenterImpl(
     private var view: TopRatedMoviesView
@@ -25,14 +25,15 @@ class TopRatedMoviesPresenterImpl(
 
 
     override fun getTopRatedMovies(page: Int) {
-        model.getTopRatedMovies(object: ApiCallback<TopRatedResponse> {
-            override fun onSuccess(data: TopRatedResponse) {
-                view.showTopRatedMovies(data)
-            }
-            override fun onError(message: String) {
-                Log.e("Fetch movies error", message)
-            }
-        }, page)
+        model.getTopRatedMovies(page)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                view.showTopRatedMovies(it)
+            }, {
+                Log.e("Error!", it.toString())
+            })
+
     }
 
     override fun nextPage(topRatedResponse: TopRatedResponse) {
