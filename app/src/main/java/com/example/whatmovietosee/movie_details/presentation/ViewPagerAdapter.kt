@@ -1,4 +1,4 @@
-package com.example.whatmovietosee.modules.movie_details.adapters
+package com.example.whatmovietosee.movie_details.presentation
 
 import Backdrops
 import android.view.LayoutInflater
@@ -12,14 +12,16 @@ import kotlinx.android.synthetic.main.item_photo.view.*
 
 class ViewPagerAdapter(val backdrops : List<Backdrops>) : RecyclerView.Adapter<PagerVH>() {
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PagerVH =
-        PagerVH(LayoutInflater.from(parent.context).inflate(R.layout.item_photo, parent, false))
+        PagerVH(
+            LayoutInflater.from(
+                parent.context
+            ).inflate(R.layout.item_photo, parent, false)
+        )
 
     override fun getItemCount(): Int = backdrops.size
 
     override fun onBindViewHolder(holder: PagerVH, position: Int): Unit = holder.itemView.run {
-        //photoNumber.text = "Photo ${position+1}/${getItemCount()}"
         Glide
             .with(this)
             .load("https://image.tmdb.org/t/p/w533_and_h300_bestv2"+backdrops[position].filePath)

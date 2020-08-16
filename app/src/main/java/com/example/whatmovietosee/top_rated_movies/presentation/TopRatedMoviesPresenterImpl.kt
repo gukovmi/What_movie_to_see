@@ -3,6 +3,7 @@ package com.example.whatmovietosee.top_rated_movies.presentation
 import android.util.Log
 import com.example.whatmovietosee.domain.entity.TopRated.Movie
 import com.example.whatmovietosee.domain.entity.TopRated.TopRatedResponse
+import com.example.whatmovietosee.presentation.base.BasePresenter
 import com.example.whatmovietosee.top_rated_movies.di.TopRatedMoviesModelFactory
 import com.example.whatmovietosee.top_rated_movies.domain.TopRatedMoviesModel
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -10,9 +11,8 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
 
-class TopRatedMoviesPresenterImpl(
-    private var view: TopRatedMoviesView
-): TopRatedMoviesPresenter {
+class TopRatedMoviesPresenterImpl: TopRatedMoviesPresenter, BasePresenter<TopRatedMoviesView>() {
+
     private var model: TopRatedMoviesModel = TopRatedMoviesModelFactory().create()
 
     override fun onViewAttached() {
@@ -20,19 +20,18 @@ class TopRatedMoviesPresenterImpl(
     }
 
     override fun onMovieItemClick(movie: Movie) {
-        view.navigateToMovieDetails(movie)
+        view?.navigateToMovieDetails(movie)
     }
-
 
     override fun getTopRatedMovies(page: Int) {
         model.getTopRatedMovies(page)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                view.showTopRatedMovies(it)
+                view?.showTopRatedMovies(it)
             }, {
                 Log.e("Error!", it.toString())
-            })
+            }).untilDestroy()
 
     }
 
@@ -51,6 +50,4 @@ class TopRatedMoviesPresenterImpl(
             getTopRatedMovies(currentPage-1)
         }
     }
-
-
 }

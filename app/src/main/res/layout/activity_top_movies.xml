@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".top_rated_movies.presentation.TopRatedMoviesActivity"
     android:orientation="vertical"
-    android:tint="#F4F4ED">
+    android:tint="@color/colorBackground">
+
     <FrameLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:background="@color/colorBackground">
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/topRatedMoviesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/topRatedMoviesRecyclerView"
-        android:scrollbars="vertical"
+        android:scrollbars="vertical" />
 
-    />
     </FrameLayout>
+
     <FrameLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_weight="12">
+        android:layout_weight="12"
+        android:background="@color/colorBackground">
+
     <TextView
         android:id="@+id/pageNumber"
         android:layout_gravity="center"
@@ -29,36 +33,27 @@
         android:text="Номер страницы"
         android:textSize="16dp"
         android:textStyle="bold"
-        android:textColor="@android:color/black"
-        />
-<!--    <Button android:layout_height="wrap_content"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_gravity="end"-->
-<!--        android:id="@+id/nextPageButton"-->
-<!--        anroid:-->
-<!--        android:text="Далее"-->
+        android:textColor="@android:color/black" />
 
-<!--        />-->
         <ImageButton
             android:id="@+id/nextPageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/right"
-            android:layout_gravity="end"/>
-<!--        <Button android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_gravity="start"-->
-<!--            android:id="@+id/backPageButton"-->
-<!--            android:text="Назад"-->
-<!--            />-->
+            style="@android:style/Widget.DeviceDefault.ImageButton"
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center|end"
+            android:background="@color/colorBackground"
+            android:src="@android:drawable/ic_media_next"
+            android:tint="#000000"
+            tools:src="@android:drawable/ic_media_next" />
+
         <ImageButton
             android:id="@+id/previousPageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:src="@drawable/left" />
+            android:layout_width="46dp"
+            android:layout_height="46dp"
+            android:layout_gravity="center|start"
+            android:background="@color/colorBackground"
+            android:src="@android:drawable/ic_media_previous"
+            android:tint="#000000" />
     </FrameLayout>
-
-
 
 </LinearLayout>

@@ -2,18 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:tint="#F4F4ED"
-    >
-    <!--    android:background="@color/colorPrimaryDark"-->
-<!--<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="match_parent"-->
-<!--    android:layout_height="match_parent"-->
-<!--    android:orientation="vertical"-->
-<!--    android:background="@color/colorPrimaryDark"-->
-<!--    android:id="@+id/ll1"-->
-<!--    android:scrollbars="vertical"-->
-<!--    >-->
-
+    android:background="@color/colorBackground">
 
     <LinearLayout
     android:id="@+id/moviesLayout"
@@ -21,16 +10,13 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="16dp"
-    android:layout_gravity="top"
-        >
+    android:layout_gravity="top">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/movieDetailsCover"
         android:layout_gravity="center"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
-
+        android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/movieDetailsTitle"
@@ -41,28 +27,18 @@
             android:textColor="#000000"
             android:textSize="16sp" />
 
-
         <TextView
             android:id="@+id/movieDetailsSubtitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
-            />
+            android:textColor="#000000" />
 
         <TextView
             android:id="@+id/movieDetailsDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
+            android:textColor="#000000" />
 
-           />
-
-<!--        <ImageView-->
-<!--            android:id="@+id/movieDetailsRating_image"-->
-<!--            android:layout_width="15dp"-->
-<!--            android:layout_height="15dp"-->
-<!--            android:src="@drawable/star"-->
-<!--            android:tint="#FFE600" />-->
         <RatingBar
             android:id="@+id/movieDetailsRatingBar"
             android:layout_width="wrap_content"
@@ -71,8 +47,7 @@
             android:stepSize="0.1"
             android:rating="0.0"
             android:layout_gravity="center"
-            style="?android:attr/ratingBarStyleIndicator"
-            />
+            style="?android:attr/ratingBarStyleIndicator"/>
 
         <TextView
             android:id="@+id/movieDetailsRating"
@@ -82,19 +57,19 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="16sp"
-            android:layout_gravity="center"
-            />
+            android:layout_gravity="center" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
+
         <Button
+            android:id="@+id/movieDetailsWatchTrailer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/movieDetailsWatchTrailer"
             android:text="Смотреть трейлер"
             android:layout_gravity="center"/>
-
     </LinearLayout>
-<!--</FrameLayout>-->
+
 </ScrollView>

@@ -9,20 +9,12 @@ import com.example.whatmovietosee.domain.entity.TopRated.Movie
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item_movie.view.*
 
-
-
 class TopRatedMoviesAdapter (private val movies: List<Movie>,
                              private val rowLayout: Int,
                              val clickListener: (Movie) -> Unit
 ): RecyclerView.Adapter<TopRatedMoviesAdapter.MovieViewHolder>() {
 
     class MovieViewHolder(v:View): RecyclerView.ViewHolder(v) {
-
-//        internal var movieTitle: TextView = v.findViewById(R.id.title)
-//        internal var data: TextView = v.findViewById(R.id.subtitle)
-//        internal var movieDescription: TextView = v.findViewById(R.id.description)
-//        internal var rating: TextView = v.findViewById(R.id.rating)
-//        internal var cover = v.findViewById<AppCompatImageView>(R.id.cover)
 
         fun bindMovie(movie: Movie, clickListener: (Movie) -> Unit) {
             itemView.apply {
@@ -39,10 +31,8 @@ class TopRatedMoviesAdapter (private val movies: List<Movie>,
                     .into(cover)
 
                 setOnClickListener { clickListener(movie) }
-
             }
         }
-
     }
 
     override fun onCreateViewHolder(
@@ -60,12 +50,6 @@ class TopRatedMoviesAdapter (private val movies: List<Movie>,
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        //val current = movies[position]
         holder.bindMovie(movie= movies[position], clickListener = clickListener)
-
-
-
     }
-
-
 }

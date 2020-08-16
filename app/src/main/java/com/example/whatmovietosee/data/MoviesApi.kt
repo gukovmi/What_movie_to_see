@@ -5,7 +5,6 @@ import MovieDetails
 import VideosResponse
 import com.example.whatmovietosee.domain.entity.TopRated.TopRatedResponse
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -23,18 +22,18 @@ interface MoviesApi {
         @Path("movie_id") movieId:Int,
         @Query("api_key") apiKey:String,
         @Query("language") language:String
-    ): Call<MovieDetails>
+    ): Single<MovieDetails>
 
     @GET("movie/{movie_id}/videos")
     fun getVideosById(
         @Path("movie_id") movieId:Int,
         @Query("api_key") apiKey:String,
         @Query("language") language:String
-    ): Call<VideosResponse>
+    ): Single<VideosResponse>
 
     @GET("movie/{movie_id}/images")
     fun getImagesById(
         @Path("movie_id") movieId:Int,
         @Query("api_key") apiKey:String
-    ): Call<ImagesResponse>
+    ): Single<ImagesResponse>
 }
